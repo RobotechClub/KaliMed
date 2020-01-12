@@ -8,10 +8,6 @@ class DetailsScreen extends React.Component {
         return {
             title: params ? params.otherParam : 'A Nested Details Screen',
             /* These values are used instead of the shared configuration! */
-            headerStyle: {
-                backgroundColor: navigationOptions.headerTintColor,
-            },
-            headerTintColor: navigationOptions.headerStyle.backgroundColor,
         };
     };
 
@@ -26,19 +22,6 @@ class DetailsScreen extends React.Component {
                 <Text>Details Screen</Text>
                 <Text>itemId: {JSON.stringify(itemId)}</Text>
                 <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-                <Button
-                    title="Update the title"
-                    onPress={() =>
-                        this.props.navigation.setParams({ otherParam: 'Updated!' })}
-                />
-                <Button
-                    title="Go to Details... again"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
-                <Button
-                    title="Go back"
-                    onPress={() => this.props.navigation.goBack()}
-                />
             </View>
         );
     }

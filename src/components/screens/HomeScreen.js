@@ -1,25 +1,40 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+})
 
 class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => {
-            /* 1. Navigate to the Details route with params */
-            this.props.navigation.navigate('Details', {
-              itemId: 86,
-              otherParam: 'First Details',
-            });
-          }}
+      <View style={styles.container}>
+        <FlatList
+          data={[
+            { key: 'Devin' },
+            { key: 'Dan' },
+            { key: 'Dominic' },
+            { key: 'Jackson' },
+            { key: 'James' },
+            { key: 'Joel' },
+            { key: 'John' },
+            { key: 'Jillian' },
+            { key: 'Jimmy' },
+            { key: 'Julie' },
+          ]}
+          renderItem={({ item }) => <Text onPress={() => this.props.navigation.navigate('Details')} style={styles.item}>{item.key}</Text>}
         />
       </View>
+
     );
   }
 }
