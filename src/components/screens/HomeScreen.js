@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import FloatingButton from '../main/FloatingButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +34,8 @@ class HomeScreen extends React.Component {
           ]}
           renderItem={({ item }) => <Text onPress={() => this.props.navigation.navigate('Details')} style={styles.item}>{item.key}</Text>}
         />
-      </View>
+        <FloatingButton/>
+        </View>
 
     );
   }
