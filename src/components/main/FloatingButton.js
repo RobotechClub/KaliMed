@@ -1,36 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { openBookmarkModal } from '../../store/actions/kalimedActions';
 
-export default function FloatingButton() {
-    return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.fab}>
-                <Text style={styles.text}>+</Text>
+
+class FloatingButton extends React.Component {
+
+    render() {
+        return (
+            <TouchableOpacity
+                onPress={() => this.props.openBookmarkModal()}
+                style={{
+                    borderWidth: 1,
+                    borderColor: 'rgba(0,0,0,0.2)',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 70,
+                    position: 'absolute',
+                    bottom: 10,
+                    right: 10,
+                    height: 70,
+                    backgroundColor: '#fff',
+                    borderRadius: 100,
+                }}
+            >
+                <Icon name="home" size={30} color="#01a699" />
             </TouchableOpacity>
-        </View>
-    );
+        )
+    }
 }
 
-const styles = StyleSheet.create({
-    fab: {
-        height: 50,
-        width: 50,
-        borderRadius: 200,
-        position: 'absolute',
-        bottom: 50,
-        right: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#686cc3',
-    },
-    text: {
-        fontSize: 30,
-        color: 'white'
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-    },
+const mapStateToProps = state => ({
 });
+
+export default connect(mapStateToProps, { openBookmarkModal })(FloatingButton)
