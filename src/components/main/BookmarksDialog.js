@@ -33,7 +33,7 @@ function BookmarksDialog(props) {
           <SelectMultiple
             items={fruits}
             selectedItems={fruits}
-            onSelectionsChViewange={(item) => console.log(item)}
+            onSelectionsChange={(item) => console.log(item)}
           />
         </ScrollView>
       </View>
