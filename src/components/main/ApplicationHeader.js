@@ -3,7 +3,6 @@ import { Button, Header, Icon } from 'react-native-elements';
 import { View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import RNPickerSelect from 'react-native-picker-select';
-
 export default class ApplicationHeader extends React.Component {
     toggleDrawer = () => {
         this.props.navigationProps.toggleDrawer();
@@ -26,12 +25,31 @@ export default class ApplicationHeader extends React.Component {
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ width: '60%' }}>
                         <SearchBar
-                            placeholder="Type Here..."
+                            round={true}
+                            lightTheme={true}
+                            containerStyle={{
+                                backgroundColor: '#00bcd4',
+                                borderWidth: 0, //no effect
+                                shadowColor: 'white', //no effect
+                                borderBottomColor: 'transparent',
+                                borderTopColor: 'transparent'
+                            }}
+                            inputContainerStyle={{
+                                backgroundColor: '#00bcd4',
+                                borderWidth: 3,
+                                borderColor: 'yellow',
+                                borderBottomColor: 'yellow',
+                                borderBottomWidth: 3,
+                                borderTopColor: 'yellow',
+                                borderTopWidth: 3,
+
+                            }}
+                            placeholder="Search"
                             onChangeText={this.updateSearch}
                             value={search}
                         />
                     </View>
-                    <View style={{ width: '40%' }}>
+                    <View style={{ flex: 1 }}>
                         <RNPickerSelect
                             onValueChange={(value) => console.log(value)}
                             items={[
