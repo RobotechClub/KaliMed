@@ -1,22 +1,44 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { connect } from 'react-redux';
+import React from 'react';
+import { View, ScrollView, Text, YellowBox } from 'react-native';
+import { Button, Icon } from 'react-native-elements';
+import SelectMultiple from 'react-native-select-multiple';
 import { Dialog } from 'react-native-simple-dialogs';
+import { connect } from 'react-redux';
 import { closeBookmarkModal } from '../../store/actions/kalimedActions';
 
-class BookmarksDialog extends Component {
+YellowBox.ignoreWarnings([
+  'VirtualizedLists should never be nested',
+  'componentWillReceiveProps has been renamed'
+])
+function BookmarksDialog(props) {
 
-  render() {
-    return (
-      <Dialog
-        visible={this.props.dialogVisible}
-        title="Custom Dialog"
-        onTouchOutside={() => this.props.closeBookmarkModal()} >
-        <View>
+  const fruits = ['Apples', 'Oranges', 'Pears']
+
+  const deleteIcon = <Icon name="delete" size={25} color="white" />;
+
+  return (
+    <Dialog
+      visible={props.dialogVisible}
+      onTouchOutside={() => props.closeBookmarkModal()} >
+      <View>
+        <View style={{ flexDirection: "row" }}>
+          <Text style={{ fontSize: 20, flex: 1 }}> Bookmarks </Text>
+          <Button
+            type="solid"
+            icon={deleteIcon}
+          />
+
         </View>
-      </Dialog>
-    );
-  }
+        <ScrollView>
+          <SelectMultiple
+            items={fruits}
+            selectedItems={fruits}
+            onSelectionsChViewange={(item) => console.log(item)}
+          />
+        </ScrollView>
+      </View>
+    </Dialog>
+  );
 }
 
 const mapStateToProps = state => ({

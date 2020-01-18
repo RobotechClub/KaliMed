@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, Text} from 'react-native'
+import { Text, View } from 'react-native';
 
 class DetailsScreen extends React.Component {
     static navigationOptions = ({ navigation, navigationOptions }) => {
