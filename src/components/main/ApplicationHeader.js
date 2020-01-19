@@ -1,8 +1,25 @@
 import React from 'react';
 import { Button, Header, Icon } from 'react-native-elements';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import RNPickerSelect from 'react-native-picker-select';
+import { Chevron } from 'react-native-shapes';
+
+const pickerSelectStyles = StyleSheet.create({
+    inputIOS: {
+        fontSize: 22,
+        paddingVertical: 8,
+        color: 'white',
+        top: 10,
+    },
+    inputAndroid: {
+        fontSize: 22,
+        paddingVertical: 8,
+        color: 'white',
+        top: 10,
+
+    },
+});
 export default class ApplicationHeader extends React.Component {
     toggleDrawer = () => {
         this.props.navigationProps.toggleDrawer();
@@ -49,8 +66,19 @@ export default class ApplicationHeader extends React.Component {
                             value={search}
                         />
                     </View>
-                    <View style={{ flex: 1 }}>
+                    <View style={{ flex: 1, backgroundColor: '#00bcd4' }}>
                         <RNPickerSelect
+                            value='football'
+                            style={{
+                                ...pickerSelectStyles,
+                                iconContainer: {
+                                    top: 35,
+                                    right: 20,
+                                },
+                            }}
+                            Icon={() => {
+                                return <Chevron size={1.5} color="white" />;
+                            }}
                             onValueChange={(value) => console.log(value)}
                             items={[
                                 { label: 'Football', value: 'football' },
@@ -70,4 +98,5 @@ export default class ApplicationHeader extends React.Component {
             </View>
         );
     }
+
 }
