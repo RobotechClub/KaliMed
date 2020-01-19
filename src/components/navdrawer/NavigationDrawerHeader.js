@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { DrawerItems } from 'react-navigation-drawer';
 import SwitchButton from './SwitchButton';
 
 const styles = StyleSheet.create({
@@ -19,12 +18,14 @@ const styles = StyleSheet.create({
     },
 
 })
-export const NavigationDrawerHeader = (props) => (
-    <View>
+
+function NavigationDrawerHeader(props) {
+
+    return (
         <View style={{ backgroundColor: '#00bcd4' }}>
             <View style={{ flexDirection: 'row' }}>
                 <Text style={styles.mainText}> KaliMed </Text>
-                <View style={{ width: '60%' }}>
+                <View style={{ width: '55%' }}>
                     <SearchBar
                         round={true}
                         lightTheme={true}
@@ -59,7 +60,7 @@ export const NavigationDrawerHeader = (props) => (
 
             </View>
         </View>
-        <DrawerItems {...props} />
-    </View>
-)
+    );
+}
 
+export default NavigationDrawerHeader

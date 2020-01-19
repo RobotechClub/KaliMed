@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation-stack'
 import ApplicationHeader from '../main/ApplicationHeader'
 import DetailsScreen from '../screens/DetailsScreen'
 import HomeScreen from '../screens/HomeScreen'
-import { NavigationDrawerHeader } from './NavigationDrawerHeader'
+import CustomSideBarMenu from './CustomSideBarMenu'
 
 const items = ["Cardiology", "Endocrinology", "Gastroenterology",
   "Hematology-oncology", " Muscoloskeletal System",
@@ -43,7 +43,8 @@ const getDrawerItems = () => {
 const NavigationDrawer = createDrawerNavigator(
   getDrawerItems(),
   {
-    contentComponent: NavigationDrawerHeader,
+    contentComponent: CustomSideBarMenu,
   })
+  
 
 export default createAppContainer(NavigationDrawer);
