@@ -3,6 +3,7 @@ import { createAppContainer } from 'react-navigation'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createStackNavigator } from 'react-navigation-stack'
 import ApplicationHeader from '../main/ApplicationHeader'
+import DetailsHeader from '../main/DetailsHeader'
 import DetailsScreen from '../screens/DetailsScreen'
 import HomeScreen from '../screens/HomeScreen'
 import CustomSideBarMenu from './CustomSideBarMenu'
@@ -22,7 +23,7 @@ const HomeStackNavigator = createStackNavigator({
   Details: {
     screen: DetailsScreen,
     navigationOptions: ({ navigation }) => ({
-      header: () => <ApplicationHeader navigationProps={navigation} />,
+      header: () => <DetailsHeader navigationProps={navigation} />,
     }),
   },
 });
