@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button, Header, Icon } from 'react-native-elements';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import RNPickerSelect from 'react-native-picker-select';
 import { Chevron } from 'react-native-shapes';
+import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 
 const pickerSelectStyles = StyleSheet.create({
     inputIOS: {
@@ -88,11 +89,24 @@ export default class ApplicationHeader extends React.Component {
                         />
                     </View>
                 </View>
-
                 <Header
+                    placement="left"
                     leftComponent={menuButton}
-                    centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'home', color: '#fff' }}
+                    centerComponent={{ text: 'Caddiology', style: { color: '#fff' } }}
+                    rightComponent={
+                        <Menu onSelect={value => alert(`Selected number: ${value}`)} style={{ paddingRight: 5 }}>
+                            <MenuTrigger text="select">
+                                <Icon name="ellipsis-v" type='font-awesome' color='white' size={25} />
+                            </MenuTrigger>
+                            <MenuOptions>
+                                <MenuOption value={1} text='Settings' />
+                                <MenuOption value={2} text='About' />
+                                <MenuOption value={3} text='Status' />
+
+                            </MenuOptions>
+
+                        </Menu>
+                    }
                 />
 
             </View>
